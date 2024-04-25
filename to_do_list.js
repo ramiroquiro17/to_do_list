@@ -1,18 +1,9 @@
-let tareas = [
-  {
-    nombre:'estudiar',
-    completada:false
-  },
-  {
-    nombre:'lavar ropa',
-    completada:false
-  },
-  {
-    nombre:'pasear perro',
-    completada:false
-  }
-];
-
+let tareas = [];
+let tareasGuardadas = JSON.parse(localStorage.getItem('tareasGuardadas'))
+if (!(tareasGuardadas === null))
+  tareasGuardadas.forEach((element)=>{
+    tareas.push(element)
+  })
 const mostrarTareas = () => {
   let html = "<ul>";
   tareas.forEach(function(elemento, indice) {
@@ -38,6 +29,7 @@ const mostrarTareas = () => {
     })
   })
   console.log(tareas)
+  localStorage.setItem('tareasGuardadas',JSON.stringify(tareas));
 };
 
 mostrarTareas();
